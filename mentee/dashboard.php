@@ -2,8 +2,10 @@
 
 error_reporting(E_ERROR | E_PARSE);
 
+//Include connection file
 include '../connection/db.php';
 
+//start session
 session_start();
 
 if(!$_SESSION['mentee']) {
@@ -41,9 +43,7 @@ if(!$_SESSION['mentee']) {
             $mentor_phone = $row->phone;
             $mentor_gender =  $row->gender; 
             $mentor_role =  $row->role; 
-        }
-
-        
+        }    
 
 ?>
 

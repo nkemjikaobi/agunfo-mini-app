@@ -1,8 +1,10 @@
 <?php
 error_reporting(E_ERROR | E_PARSE);
 
+//include connection file
 include 'connection/db.php';
 
+//start session
 session_start();
 
 if(isset($_POST['btn-login'])){

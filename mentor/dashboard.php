@@ -2,13 +2,15 @@
 
 error_reporting(E_ERROR | E_PARSE);
 
+//Include connection file
 include '../connection/db.php';
 
+//start session
 session_start();
 
 if($_SESSION['mentor'] == false) {
     header("location:../login.php"); 
-    die(); 
+    die();
   }
 
     //Assign the session variables
@@ -23,6 +25,7 @@ if($_SESSION['mentor'] == false) {
     
     //Get the id from the mentor table
     $sql = $conn->query("SELECT * FROM mentor WHERE email = '$email'");
+
      //Grab the details of the row returned 
      while($row = $sql->fetch_object()){
         $id =  $row->id; 
@@ -44,14 +47,17 @@ if($_SESSION['mentor'] == false) {
 	<img class="round" src="../images/<?php echo $image; ?>" alt="user-photo" width='150' height='150' />
 	<h3><?php echo ucfirst($firstName).' '. ucfirst($lastName);  ?></h3>
     <h4><?php echo $email;  ?></h4>
+
     <?php 
-    //Get all mentees associated with mentor
-    $sql = $conn->query("SELECT * FROM mentee WHERE mentor_id = '$id'"); ?>
+        //Get all mentees associated with mentor
+        $sql = $conn->query("SELECT * FROM mentee WHERE mentor_id = '$id'"); 
+    ?>
 	<p>The mentee(s) assigned to you is/are: <br>
         <?php 
-        //Grab the details of the row returned 
-            while($row = $sql->fetch_object()){ ?>
-               </p>
+            //Grab the details of the row returned 
+            while($row = $sql->fetch_object()){ 
+        ?>
+    </p>
 
 	<div class="skills">
         <h3>ALL Your MENTEE'S Details</h3>

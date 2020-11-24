@@ -2,13 +2,15 @@
 
 error_reporting(E_ERROR | E_PARSE);
 
+//Include connection file
 include 'connection/db.php';
 
+//start session
 session_start();
 
 if(isset($_POST['btn-submit'])){
 
-
+    //assign the variables
     $firstName = strip_tags($_POST['firstName']);
     $lastName = strip_tags($_POST['lastName']);
     $userName = strip_tags($_POST['userName']);
@@ -53,11 +55,12 @@ if(isset($_POST['btn-submit'])){
 
     if($count == 0){
         if($role == 2){
-            
+
             $sqlUser = $conn->query("INSERT INTO users(firstName,lastName,email,userName,phone,gender,role,image,password)
-            VALUES('$firstName','$lastName','$email','$userName','$phone','$gender','$role','$filename','$hpassword')");
+                        VALUES('$firstName','$lastName','$email','$userName','$phone','$gender','$role','$filename','$hpassword')");
+
             $sqlMentee = $conn->query("INSERT INTO mentee(firstName,lastName,email,userName,phone,gender,role,image,password,mentor_id)
-            VALUES('$firstName','$lastName','$email','$userName','$phone','$gender','$role','$filename','$hpassword','$mentor_id')");
+                        VALUES('$firstName','$lastName','$email','$userName','$phone','$gender','$role','$filename','$hpassword','$mentor_id')");
 
             //Store the images temporarily in a folder
             move_uploaded_file($tempname, $folder);
@@ -80,9 +83,10 @@ if(isset($_POST['btn-submit'])){
     }else{
 
         $sqlUsers = $conn->query("INSERT INTO users(firstName,lastName,email,userName,phone,gender,role,image,password)
-        VALUES('$firstName','$lastName','$email','$userName','$phone','$gender','$role','$filename','$hpassword')");
+                    VALUES('$firstName','$lastName','$email','$userName','$phone','$gender','$role','$filename','$hpassword')");
+                    
         $sqlMentor = $conn->query("INSERT INTO mentor(firstName,lastName,email,userName,phone,gender,role,image,password)
-        VALUES('$firstName','$lastName','$email','$userName','$phone','$gender','$role','$filename','$hpassword')");
+                    VALUES('$firstName','$lastName','$email','$userName','$phone','$gender','$role','$filename','$hpassword')");
 
         //Store the images temporarily in a folder
         move_uploaded_file($tempname, $folder);
