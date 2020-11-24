@@ -20,63 +20,7 @@ if($conn->connect_errno){
     die("Error: ".'<span style=color:red;>'.$conn->connect_error.'</span>');
 }
 
-$sql = "CREATE TABLE users (
-    id int(255) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    firstName varchar(255) NOT NULL,
-    lastName varchar(255) NOT NULL,
-    email varchar(255) NOT NULL,
-    userName varchar(255) NOT NULL,
-    phone varchar(255) NOT NULL,
-    gender varchar(255) NOT NULL,
-    role varchar(255) NOT NULL,
-    image blob NOT NULL,
-    password varchar(255) NOT NULL
-)";
- 
- $sql1 = "CREATE TABLE mentor (
-    id int(255) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    firstName varchar(255) NOT NULL,
-    lastName varchar(255) NOT NULL,
-    email varchar(255) NOT NULL,
-    userName varchar(255) NOT NULL,
-    phone varchar(255) NOT NULL,
-    gender varchar(255) NOT NULL,
-    role varchar(255) NOT NULL,
-    image blob NOT NULL,
-    password varchar(255) NOT NULL
-)";
 
-$sql2 = "CREATE TABLE mentee (
-    id int(255) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    firstName varchar(255) NOT NULL,
-    lastName varchar(255) NOT NULL,
-    email varchar(255) NOT NULL,
-    userName varchar(255) NOT NULL,
-    phone varchar(255) NOT NULL,
-    gender varchar(255) NOT NULL,
-    role varchar(255) NOT NULL,
-    image blob NOT NULL,
-    password varchar(255) NOT NULL,
-    mentor_id int(255) NOT NULL
-)";
-
-if ($conn->query($sql) === TRUE) {
-  echo "users created successfully";
-} else {
-  echo "Error creating table: " . $conn->error;
-}
-if ($conn->query($sql1) === TRUE) {
-    echo "mentor created successfully";
-  } else {
-    echo "Error creating table: " . $conn->error;
-  }
-  if ($conn->query($sql2) === TRUE) {
-    echo "mentee created successfully";
-  } else {
-    echo "Error creating table: " . $conn->error;
-  }
-
-$conn->close();
 
 
 
